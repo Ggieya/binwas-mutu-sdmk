@@ -1204,10 +1204,10 @@
     const el = document.getElementById('predikat');
     let label, cls;
     if (total === 0)      { label = 'Belum dinilai'; cls = 'belum'; }
-    else if (total > 85)  { label = 'Sangat Baik';   cls = 'sangat-baik'; }
-    else if (total >= 76) { label = 'Baik';           cls = 'baik'; }
-    else if (total >= 60) { label = 'Cukup';          cls = 'cukup'; }
-    else if (total >= 50) { label = 'Kurang';         cls = 'kurang'; }
+    else if (total > 90)  { label = 'Sangat Baik';   cls = 'sangat-baik'; }
+    else if (total > 80)  { label = 'Baik';           cls = 'baik'; }
+    else if (total > 70)  { label = 'Cukup';          cls = 'cukup'; }
+    else if (total > 60)  { label = 'Kurang';         cls = 'kurang'; }
     else                  { label = 'Sangat Kurang';  cls = 'sangat-kurang'; }
     el.textContent = label;
     el.className = 'predikat ' + cls;
@@ -1595,10 +1595,10 @@ function simpanExcel() {
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw0v5jMlFHGRwaBcA56gsOwKF9iiBPnHxteSHYn3si9QtNTOqzcgL_fnyA9q1eR_24/exec';
 
 function kirimKeServer() {
-  if (!SCRIPT_URL || SCRIPT_URL === 'GANTI_URL_DISINI') {
+  if (!SCRIPT_URL || SCRIPT_URL.length < 10) {
     tampilToast('⚠ URL server belum dikonfigurasi. Hubungi admin.');
     return;
-}
+  }
 
   const { identitas, baris, nilaiA, nilaiB, nilaiC, nilaiD, total, predikat, catatanTambahan } = ambilData();
 
